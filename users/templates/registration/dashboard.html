@@ -1,0 +1,382 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors/aqua.css'%}">
+    <script src="https://kit.fontawesome.com/9a9380daa6.js" crossorigin="anonymous"></script>
+    <style>
+        .width {
+            margin-left: 23%;
+            margin-right: 23%;
+            width: 50%;
+            padding: 0.5rem;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .logo-sm {
+            width: 10rem;
+            height: auto;
+        }
+
+        .logo {
+            margin-bottom: 4rem;
+        }
+
+        #button {
+            margin-bottom: 4rem;
+        }
+
+        .box-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3px 0.938rem;
+            background-color: #14C38E33;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+            max-width: 9rem;
+        }
+
+        .box-btn p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn-div {
+            /* display: inline-block;
+            height: 100%;
+            width: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 0.6rem;
+            padding-right: 0.4rem; */
+        }
+
+        .btn-img{
+            /* margin-bottom: 1.1rem; */
+            /* padding-right: 0.6rem; */
+        }
+
+        aside ul {
+            padding: 0;
+            padding-left: 0.5rem;
+        }
+
+        aside li {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            list-style: none;
+            color: black;
+        }
+
+        aside li span {
+            margin-left: 1.1rem;
+        }
+
+        .color {
+            color: #14C38E;
+        }
+
+        header {
+            margin: 2.1rem 4rem;
+        }
+
+        #nav p {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        #name {
+            margin: 2.1rem 4rem;
+        }
+
+        #booking {
+            margin: 2.1rem 4rem;
+        }
+
+        .parent {
+            position: relative;
+            height: 14rem;
+            width: 100%;
+        }
+
+        .parent2 {
+            position: relative;
+            height: 18rem;
+            width: 100%;
+        }
+
+        .box-div {
+            position: absolute;
+            height: 85%;
+            width: 100%;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            padding-top: 3.4rem;
+            padding-left: 2.7rem;
+            padding-bottom: 2.7rem;
+            color: rgb(233, 104, 233);
+        }
+
+        .len {
+            height: 10rem;
+        }
+
+        #box-div h1{
+            font-size: 2.5rem;
+            color: #14C38E;
+        }
+
+        #div-img {
+            position: absolute;
+            top: 0;
+            right: 3rem;
+            z-index: 1;
+        }
+
+        #div-img2 {
+            position: absolute;
+            top: 25%;
+            right: 5%;
+            z-index: 1;
+        }
+
+        #stat-over {
+            color: black;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-box {
+            display: flex;
+            align-items: center;
+            height: 80%;
+            margin: 0.8rem 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .in-block {
+            padding: 0.5rem;
+            border-radius: 2rem;
+        }
+
+        .in-block2 {
+            padding-top: 0.5rem;
+            color: black;
+        }
+
+        .in-block2 h1{
+            margin-bottom: 0;
+            color: black;
+        }
+
+        .cw {
+            background-color: rgb(252, 242, 225);
+            border-radius: 0.7rem;
+            box-sizing: border-box;
+        }
+
+        .cp {
+            background-color: rgb(252, 165, 252);
+            border-radius: 0.7rem;
+            box-sizing: border-box;
+        }
+
+
+        #statistics {
+            margin-bottom: 2rem;
+            margin-right: 2.1rem;
+        }
+
+        #verify-hist {
+            color: black;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #pay-hist {
+            color: black;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #payment-history {
+            background-color: #3C77D2;
+            border-radius: 1rem;
+            width: auto;
+            height: 80%;
+            margin-right: 2rem;
+        }
+
+        #history {
+            margin-bottom: 3rem;
+        }
+
+        table {
+            width: 98%;
+        }
+
+        .ver-tab {
+            padding: 0.938rem;
+            border-radius: 0.5rem;
+        }
+
+        .padd {
+            padding: 3px;
+        }
+
+        .style-table td{
+            padding: 15px;
+            background-color: #F8F8F8;
+            color: black;
+        }
+
+        .style-table th {
+            padding: 15px;
+            font-weight: 400;
+        }
+
+        .status {
+            border: transparent;
+            border-radius: 0.4rem;
+        }
+
+        .status-green {
+            background-color: #D0F3E8;
+            color: #6EB779;
+        }
+
+        .status-red {
+            background-color: #F3D0D0;
+            color: #FF0000;
+        }
+
+        .status-orange {
+            background-color: #F0E0AE;
+            color: #F4B800;
+        }
+
+        #roomies {
+            margin: 2.1rem 4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header id="nav">
+            <div class="row">
+                <div class="col-7">
+                    <p style="color: black;">Dashboard</p>
+                    <p style="color: rgb(196, 196, 196);"><span style="color: rgb(233, 104, 233);">Monday</span>, 09 October, 2022</p>
+                </div>
+                <div class="col-5">
+                    <div class="float-end">
+                        <a href="{% url 'index' %}" class="btn btn-sm btn-dark">Home</a>
+                        <a href="{% url 'logout_user' %}" class="btn btn-sm btn-outline-dark">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% for message in messages %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Hey Scholar!</strong> {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor%}
+
+        <section class="wrapper bg-light" id="name">
+            <div class="parent">
+                <div class="box-div shadow-lg">
+                    <h2>{{object.stud.first_name}} {{object.stud.last_name}}</h2>
+                    <p>{{object.department}} | {{object.level}} Level</p>
+                    <p>{{object.mat_no}}</p>
+                </div>
+                <div id="div-img" class="lift">
+                    <img src="{% static 'assets/images/profile.jpg' %}" alt="">
+                </div>
+            </div>
+        </section>
+
+        {% if object.booking %}
+            <section class="wrapper bg-light" id="booking">
+            <div class="parent2">
+                <div class="box-div shadow-lg bg-dark">
+                    <h2 class="text-white">Hall name: {{hall.hall_name}}</h2>
+                    <h2 class="text-white">Block: {{block.block_name}}</h2>
+                    <h3 class="text-white">Floor: {{floor.floor_number}} series</h3>
+                    <p>Room: {{room.room_number}} |  Space: {{space}}</p>
+                </div>
+                <div id="div-img2" class="lift">
+                    <img src="{% static 'assets/images/hostel.png' %}" alt="">
+                </div>
+            </div>
+            <div class="float-end">
+                <a href="{% url 'un_book' object.space i_space.id %}" class="btn btn btn-outline-dark">Change Booking</a>
+            </div>
+            <br>
+        </section>
+        {% else %}
+            <div class="wrapper">
+                <div class="container">
+                    <a href="{% url 'hostel' %}" class="btn btn btn-outline-info width">Book Hostel</a>
+                </div>
+            </div>
+        {% endif %}
+        <br>
+        {% if object.booking %}
+            <section class="wrapper bg-light" id="roomates">
+            <div id="roomies">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Room mates</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Level</th>
+                          <th scope="col">Booked</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for space in spaces %}
+                          <tr>
+                            <td>{{ space.student.stud.first_name }} {{ space.student.stud.last_name }}</td>
+                            <td>{{ space.student.department}}</td>
+                            <td>{{ space.student.level}}</td>
+                              <td>{{ space.Booked}}</td>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </section>
+        {% endif %}
+        <footer class="bg-dark text-inverse">
+            <div class="container pt-13 pt-md-15 pb-7">
+              <hr class="mt-13 mt-md-15 mb-7" />
+              <div class="d-md-flex align-items-center justify-content-between">
+                <p class="mb-2 mb-lg-0">© 2022 Caleb Pedro Project. All rights reserved.</p>
+                <nav class="nav social social-white text-md-end">
+
+                </nav>
+                <!-- /.social -->
+              </div>
+              <!-- /div -->
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+
+    <script src="{% static 'assets/js/plugins.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+</html>

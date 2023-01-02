@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+* {
+    font-family: 'Sarala', sans-serif;
+}
+
+.navbtn {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    color: #14C38E;
+    text-align: center;
+    border: 1px solid #14C38E;
+    box-sizing: border-box;
+    font-size: .8rem;
+    border-radius: .625rem;
+    padding: 0.2rem 0.5rem;
+    min-width: 6.5rem;
+    margin-top: 0.8rem;
+}
+
+.navbtn:hover {
+    transform: translateY(-.15rem);
+    box-shadow: 0 .25rem .75rem rgba(30, 34, 40, .15);
+}
+
+.nbb {
+    width: auto;
+    height: auto;
+    font-size: 1.05rem;
+}
+
+.navbtn-green {
+    background-color: rgba(20, 195, 142, 0.1);
+    border: transparent;
+}
+
+.navbtn-white {
+    background-color: white;
+}
+
+.dn {
+    display: inline-block;
+    padding-top: 1rem;
+}
+
+.headerpush {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.headerpush h1{
+    font-size: 3rem;
+    font-weight: 700;
+    color: #14C38E;
+    padding: 1.5rem 0;
+    margin-bottom: 0;
+}
+
+.headerpush p {
+    font-size: 0.9rem;
+}
+
+.cont-1 {
+    width: auto;
+    height: 40rem;
+    background-image: url(/static/assets/images/Rectangle\ 4.png);
+    background-repeat: no-repeat;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.cont-1 .container {
+    padding: 2rem;
+}
+
+.header {
+    padding: 1.5rem 0;
+    margin-bottom: 0;
+}
+
+.bdbotom {
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.bdtop {
+    border-bottom: 1px solid #00FFAB;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.line {
+    border-right: 1px solid #00FFAB;
+}
+
+.slim {
+    font-weight: 400;
+}
+
+.c-green {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #14C38E;
+}
+
+.sp-green {
+    color: #14C38E;
+    font-weight: 700;
+}
+
+.greyy {
+    margin-top: 4rem;
+    background-color: #F9F9F9;
+}
+
+.box {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3rem;
+    border: 1px solid transparent;
+    margin: 1rem;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.box h1 {
+    margin-bottom: 1.3rem;
+}
+
+.green {
+    color: #14C38E;
+    font-size: 1.3rem;
+    margin-bottom: 1.3rem;
+}
+
+.h-img {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-bottom: 1.8rem;
+}
+
+.block {
+    padding-right: 1.3rem;
+}
+
+.block span{
+    padding-right: 1.6rem;
+}
+
+.d {
+    background-color: #F8F8F8;
+}
+
+.padbm {
+    padding-bottom: 3.5rem;
+}
+
+.headerpush2 {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.headerpush2 p{
+    line-height: 2rem;
+}
+
+.big {
+    font-size: 2rem;
+}
+
+.m-right {
+    padding-right: 2rem;
+}
+
+.f-div {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+}
+
+.f-div div {
+    padding: 1rem 0;
+}
+
+.ft-icon {
+    margin-right: 2.5rem;
+    width: 1rem;
+    height: auto;
+}
+
+.ft-span {
+    display: inline-block;
+}
+
+.white-box {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+}
+
+.white-box h1{
+    font-size: 1.9rem;
+    padding-top: 1.5rem;
+    color: black;
+}
+
+.ft-btn {
+    display: inline-block;
+    float: right;
+}
+
+.input-field {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(184, 182, 182);
+    margin-bottom: 0.8rem;
+}
+
+.input-field:focus .input-field:active{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(184, 182, 182);
+}
+
+.long {
+    height: 3.5rem;
+}

@@ -1,0 +1,188 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors/aqua.css'%}">
+    <script src="https://kit.fontawesome.com/9a9380daa6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="wrapper bg-light">
+            <nav class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light caret-none">
+              <div class="container">
+                <div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+                  <div class="navbar-brand w-100">
+                    <a href="{% url 'index' %}">
+                      <img src="{% static 'assets/img/logo.png' %}" srcset="{% static 'assets/img/logo@2x.png 2x'%}" alt="" />
+                    </a>
+                  </div>
+                  <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="offcanvas-header d-lg-none">
+                      <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo-light.png'%}" srcset="{% static 'assets/img/logo-light@2x.png 2x'%}" alt="" /></a>
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                      <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Link</a></li>
+                      </ul>
+                      <!-- /.navbar-nav -->
+                    </div>
+                    <!-- /.offcanvas-body -->
+                  </div>
+                  <!-- /.navbar-collapse -->
+                  <div class="navbar-other w-100 d-flex ms-auto">
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                      <li class="nav-item d-none d-md-block">
+                        <a href="{% url 'login' %}" class="btn btn-sm btn-dark">Login</a>
+                      </li>
+                      <li class="nav-item d-none d-md-block">
+                        <a href="{% url 'registration' %}" class="btn btn-sm btn-outline-dark">Register</a>
+                      </li>
+                    </ul>
+                    <!-- /.navbar-nav -->
+                  </div>
+                  <!-- /.navbar-other -->
+                </div>
+                <!-- /.navbar-collapse-wrapper -->
+              </div>
+              <!-- /.container -->
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        <br>
+        {% for message in messages %}
+          <div class="alert alert-primary" role="alert">
+              <h4>Hey Scholar</h4>
+              <hr>
+              <p>{{message}}</p>
+          </div>
+        {% endfor%}
+        <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-dark-600 text-white" data-image-src="assets/images/black-wall.jpg">
+          <div class="container pt-17 pb-20 pt-md-19 pb-md-21 text-center">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <h1 class="display-1 mb-3 text-light">Register</h1>
+                <nav class="d-inline-block" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Register</li>
+                  </ol>
+                </nav>
+                <!-- /nav -->
+              </div>
+              <!-- /column -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container -->
+        </section>
+
+        <section class="wrapper bg-light">
+          <div class="container pb-14 pb-md-16">
+            <div class="row">
+              <div class="col-lg-7 col-xl-8 col-xxl-5 mx-auto mt-n20">
+                <div class="card">
+                  <div class="card-body p-11 text-center">
+                    <h2 class="mb-3 text-start">Register to book hostel</h2>
+                    <p class="lead mb-6 text-start">Registration takes less than a minute.</p>
+                    <form class="text-start mb-3" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="firstname" placeholder="Firstname" id="firstname">
+                        <label for="firstname">Firstname</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="lastname" placeholder="Lastname" id="lastname">
+                        <label for="lastname">Lastname</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="mat_number" placeholder="Mat Number" id="mat_number">
+                        <label for="mat_number">Mat Number</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="department" placeholder="Department" id="department">
+                        <label for="department">Department</label>
+                      </div>
+                      <div class="form-select-wrapper mb-4">
+                        <select class="form-select" name="level" aria-label="Default select example">
+                          <option selected>Level</option>
+                          <option value="100">100 level</option>
+                          <option value="200">200 level</option>
+                          <option value="300">300 level</option>
+                          <option value="400">400 level</option>
+                          <option value="500">500 level</option>
+                          <option value="600">600 level</option>
+                        </select>
+                      </div>
+                      <div class="form-select-wrapper mb-4">
+                        <select class="form-select" name="sex" aria-label="Default select example">
+                          <option selected>sex</option>
+                          <option value="100">Male</option>
+                          <option value="200">Female</option>
+                        </select>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="file" class="form-control" id="school_fees" name="school_fees">
+                        <label for="school_fees">School Fees Printout</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="file" class="form-control" name="hostel_application" id="hostel_application">
+                        <label for="hostel_application">Hostel application Printout</label>
+                      </div>
+                      <div class="form-floating mb-4">
+                        <input type="email" class="form-control" name="email" placeholder="email" id="email">
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="form-floating password-field mb-4">
+                        <input type="password" class="form-control" placeholder="Password" name="password" id="LoginPassword">
+                        <span class="password-toggle"><i class="fa-solid fa-eye"></i></span>
+                        <label for="LoginPassword">Password</label>
+                      </div>
+                      <div class="form-floating password-field mb-4">
+                        <input type="password" class="form-control" name="password2" placeholder="Confirm Password" id="loginPasswordConfirm">
+                        <span class="password-toggle"><i class="fa-solid fa-eye"></i></span>
+                        <label for="loginPasswordConfirm">Confirm Password</label>
+                      </div>
+                        <input type="submit" value="Register" class="btn btn-dark btn-login w-100 mb-2">
+                    </form>
+                    <!-- /form -->
+                    <p class="mb-0">Already have an account? <a href="#" class="hover">Login</a></p>
+                  </div>
+                  <!--/.card-body -->
+                </div>
+                <!--/.card -->
+              </div>
+              <!-- /column -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container -->
+        </section>
+
+        <footer class="bg-dark text-inverse">
+            <div class="container pt-13 pt-md-15 pb-7">
+              <hr class="mt-13 mt-md-15 mb-7" />
+              <div class="d-md-flex align-items-center justify-content-between">
+                <p class="mb-2 mb-lg-0">© 2022 Caleb Pedro Project. All rights reserved.</p>
+                <nav class="nav social social-white text-md-end">
+
+                </nav>
+                <!-- /.social -->
+              </div>
+              <!-- /div -->
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+
+    <script src="{% static 'assets/js/plugins.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+</html>

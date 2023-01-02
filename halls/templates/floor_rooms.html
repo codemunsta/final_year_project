@@ -1,0 +1,120 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors/aqua.css'%}">
+    <script src="https://kit.fontawesome.com/9a9380daa6.js" crossorigin="anonymous"></script>
+    <style>
+        .room-box {
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .long {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="wrapper bg-light">
+            <nav class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light caret-none">
+              <div class="container">
+                <div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+                  <div class="navbar-brand w-100">
+                    <a href="./index.html">
+                      <img src="./assets/img/logo.png" srcset="./assets/img/logo@2x.png 2x" alt="" />
+                    </a>
+                  </div>
+                  <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="offcanvas-header d-lg-none">
+                      <a href="./index.html"><img src="./assets/img/logo-light.png" srcset="./assets/img/logo-light@2x.png 2x" alt="" /></a>
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                      <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                      </ul>
+                      <!-- /.navbar-nav -->
+                    </div>
+                    <!-- /.offcanvas-body -->
+                  </div>
+                  <!-- /.navbar-collapse -->
+                  <div class="navbar-other w-100 d-flex ms-auto">
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                      <li class="nav-item d-none d-md-block">
+                        <a href="./contact.html" class="btn btn-sm btn-dark">Login</a>
+                      </li>
+                      <li class="nav-item d-none d-md-block">
+                        <a href="./contact.html" class="btn btn-sm btn-outline-dark">Register</a>
+                      </li>
+                    </ul>
+                    <!-- /.navbar-nav -->
+                  </div>
+                  <!-- /.navbar-other -->
+                </div>
+                <!-- /.navbar-collapse-wrapper -->
+              </div>
+              <!-- /.container -->
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        {% for message in messages %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Hey Scholar!</strong> {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor%}
+        <section class="wrapper bg-light">
+            <div class="container py-14 py-md-16">
+                <div class="row gx-lg-8 gx-xl-12 gy-10">
+                    {% for room in rooms %}
+                        <div class="col-lg-4 room-box" data-cues="bounceIn" data-delay="500">
+                        <div class="container">
+                            <h3 class="text-center">
+                                Room {{ room.room_number }}
+                            </h3>
+                            <figure><img class="w-auto" src="{% static 'assets/images/room-door.jpg' %}"alt="" /></figure>
+                            <p>Free Space </p>
+                            {% if room.free_space >= 75 %}
+                                <div class="progressbar line green" data-value="{{ room.free_space }}"></div>
+                            {% elif room.free_space >= 50 %}
+                                <div class="progressbar line yellow" data-value="{{ room.free_space }}"></div>
+                            {% elif room.free_space >= 25 %}
+                                <div class="progressbar line orange" data-value="{{ room.free_space }}"></div>
+                            {% elif room.free_space < 25 %}
+                                <div class="progressbar line red" data-value="{{ room.free_space }}"></div>
+                            {% endif %}
+                        </div>
+                        <br>
+                        <a href="{% url 'room' room.slug %}" class="btn btn-sm btn-outline-dark long">select</a>
+                    </div>
+                    {% endfor%}
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark text-inverse">
+            <div class="container pt-13 pt-md-15 pb-7">
+              <hr class="mt-13 mt-md-15 mb-7" />
+              <div class="d-md-flex align-items-center justify-content-between">
+                <p class="mb-2 mb-lg-0">© 2022 Caleb Pedro Project. All rights reserved.</p>
+                <nav class="nav social social-white text-md-end">
+
+                </nav>
+                <!-- /.social -->
+              </div>
+              <!-- /div -->
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+    <script src="{% static 'assets/js/plugins.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js'%}"></script>
+</body>
+</html>

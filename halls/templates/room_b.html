@@ -1,0 +1,271 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors/aqua.css'%}">
+    <style>
+        .box {
+            border: 1.5px solid purple;
+            margin: 2rem;
+            border-radius: 3rem;
+            padding: 3rem;
+        }
+        .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            max-width: 50%;
+        }
+        .l-t {
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .r-t {
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .l-b {
+            border-right: 1px solid black;
+            border-top: 1px solid black;
+        }
+        .r-b {
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+        }
+        .bedspace {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        a.tool {
+            text-decoration: none;
+        }
+        a.tool:hover {
+            position: relative;
+        }
+        a.tool span {
+            display: none;
+        }
+        a.tool:hover span {
+            border:  2px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            display: block;
+            z-index: 100;
+            width: 150px;
+            background: black;
+            left: 80px;
+            margin: 2px;
+            position: absolute;
+            top: 100px;
+            text-decoration: none;
+            color: white;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="wrapper bg-light">
+            <nav class="navbar navbar-expand-lg fancy navbar-light navbar-bg-light caret-none">
+              <div class="container">
+                <div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+                  <div class="navbar-brand w-100">
+                    <a href="{% url 'index' %}">
+                      <img src="{% static 'assets/img/logo.png' %}" srcset="{% static 'assets/img/logo@2x.png 2x'%}" alt="" />
+                    </a>
+                  </div>
+                  <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
+                    <div class="offcanvas-header d-lg-none">
+                      <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo-light.png'%}" srcset="{% static 'assets/img/logo-light@2x.png 2x'%}" alt="" /></a>
+                      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
+                      <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                      </ul>
+                      <!-- /.navbar-nav -->
+                    </div>
+                    <!-- /.offcanvas-body -->
+                  </div>
+                  <!-- /.navbar-collapse -->
+                  <div class="navbar-other w-100 d-flex ms-auto">
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                      <li class="nav-item d-none d-md-block">
+                        <a href="{% url 'login' %}" class="btn btn-sm btn-dark">Login</a>
+                      </li>
+                      <li class="nav-item d-none d-md-block">
+                        <a href="{% url 'registration' %}" class="btn btn-sm btn-outline-dark">Register</a>
+                      </li>
+                    </ul>
+                    <!-- /.navbar-nav -->
+                  </div>
+                  <!-- /.navbar-other -->
+                </div>
+                <!-- /.navbar-collapse-wrapper -->
+              </div>
+              <!-- /.container -->
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        {% for message in messages %}
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong>Hey Scholar!</strong> {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor%}
+        <section class="wrapper bg-light">
+            <div class="container py-14 py-md-16">
+                <h2 class="text-center">{{room}}</h2>
+                <div class="row gx-lg-8 gx-xl-12 gy-10 box">
+                    <div class="col-lg-6 inner l-t">
+                        <div class="row">
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_1.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_1.student.stud.first_name}} {{room.space_1.student.stud.last_name}} {{room.space_1.student.department }} {{room.space_1.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_1.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'up' room.space_1.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_2.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_2.student.stud.first_name}} {{room.space_2.student.stud.last_name}} {{room.space_2.student.department }} {{room.space_2.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_2.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'down' room.space_2.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 inner r-t">
+                        <div class="row">
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_3.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_3.student.stud.first_name}} {{room.space_3.student.stud.last_name}} {{room.space_3.student.department }} {{room.space_3.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_3.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'up' room.space_3.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_4.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_4.student.stud.first_name}} {{room.space_4.student.stud.last_name}} {{room.space_4.student.department }} {{room.space_4.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_4.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'down' room.space_4.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 inner l-b">
+                        <div class="row">
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_5.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_5.student.stud.first_name}} {{room.space_5.student.stud.last_name}} {{room.space_5.student.department }} {{room.space_5.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_5.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'up' room.space_5.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-12 bedspace">
+                                {% if room.space_6.Booked %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/booked.png' %}" alt="">
+                                        <span>{{room.space_6.student.stud.first_name}} {{room.space_6.student.stud.last_name}} {{room.space_6.student.department }} {{room.space_6.student.level}}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" disabled>Booked</a>
+                                {% elif room.space_6.reserved %}
+                                    <a href="#" class="tool lift">
+                                        <img src="{% static 'icons/occupied.png' %}" alt="">
+                                        <span>Reserved by Portal</span>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" disabled>Reserved</a>
+                                {% else %}
+                                    <img src="{% static 'icons/free.png' %}" alt="">
+                                    <a href="{% url 'book' 'down' room.space_6.id %}" class="btn btn-sm btn-outline-dark">Book</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark text-inverse">
+            <div class="container pt-13 pt-md-15 pb-7">
+              <hr class="mt-13 mt-md-15 mb-7" />
+              <div class="d-md-flex align-items-center justify-content-between">
+                <p class="mb-2 mb-lg-0">© 2022 Caleb Pedro Project. All rights reserved.</p>
+                <nav class="nav social social-white text-md-end">
+
+                </nav>
+                <!-- /.social -->
+              </div>
+              <!-- /div -->
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+    <script src="{% static 'assets/js/plugins.js'%}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+</body>
+</html>

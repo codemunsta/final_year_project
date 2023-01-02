@@ -1,0 +1,90 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="container">
+                <h4 >UNIBEN BED ALLOCATION SYSTEM</h4>
+            </div>
+        </header>
+        <section style="background-color:grey; border-radius: 25px;">
+            <br>
+            <div class="container" style="background-color:powderblue; border-radius: 25px;">
+                <br>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="container">
+                        {% csrf_token %}
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/icon_sm_f.png'%}" alt="Hello"/> username</label>
+                            <input type="text" class="nine columns" id="username" name="username" placeholder="Your Username Please">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/icon_sm_f.png'%}" alt="Hello"/> firstname</label>
+                            <input type="text" class="nine columns" id="firstname", name="firstname" placeholder="First Name Please">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/icon_sm_f.png'%}" alt="Hello"/> lastname</label>
+                            <input type="text" class="nine columns" id="lastname" name="lastname" placeholder="Your Father's Name Please">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/icon_sm_f.png'%}" alt="Hello"/> mat_number</label>
+                            <input type="text" class="nine columns" id="mat_number" name="mat_number" placeholder="Uniben Mat Number">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/department_sm.png'%}" alt="Hello"/> department</label>
+                            <input type="text" class="nine columns" id="department" name="department" placeholder="Your Department">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/level_sm.png'%}" alt="Hello"/> level</label>
+                            <input type="text" class="nine columns" id="level" name="level" placeholder="Your Level">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/document_sm_f.png'%}" alt="Hello"/> School_Fees Printout</label>
+                            <input type="file" class="nine columns" id="school_fees" name="school_fees">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/document_sm_f.png'%}" alt="Hello"/> hostel_application Printout</label>
+                            <input type="file" class="nine columns" id="hostel_application" name="hostel_application">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/email_sm_f.png'%}" alt="Hello"/> Email</label>
+                            <input type="email" class="nine columns" id="email" name="email" placeholder="Your email">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/password_f_sm.png'%}" alt="Hello"/> password</label>
+                            <input type="password" class="nine columns" id="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="row">
+                            <label class="three columns"><img src="{% static 'icons/password_f_sm.png'%}" alt="Hello"/> password again</label>
+                            <input type="password" class="nine columns" id="password2" name="password2" placeholder="Password again">
+                        </div>
+                        <div class="">
+                            <input class="u-full-width button-primary" type="submit">
+                        </div>
+                    </div>
+                </form>
+                <br>
+            </div>
+            <br>
+        </section>
+        <footer>
+            <div class="container">
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <p><strong>{{ message }}</strong></p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
